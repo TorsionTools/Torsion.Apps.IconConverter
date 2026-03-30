@@ -28,7 +28,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Convert ICO" FontSize="{StaticResource XLarge}" FontWeight="Bold"/>
+        <TextBlock Text="Icon Creator" FontSize="{StaticResource XLarge}" FontWeight="Bold"/>
 
         <TextBlock Grid.Row="2" Text="Select an Image file, then choose where to save the ICO."/>
         <StackPanel Grid.Row="4" Orientation="Horizontal">
