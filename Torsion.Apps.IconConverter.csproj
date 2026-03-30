@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net10.0-windows8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <UseWindowsForms>true</UseWindowsForms>
+        <AssemblyName>Torsion Tools Icon Creator</AssemblyName>
+        <ApplicationIcon>TorsionTools.ico</ApplicationIcon>
+        <PlatformTarget>x64</PlatformTarget>
+        <SupportedOSPlatformVersion>8.0</SupportedOSPlatformVersion>
+        <MyVersion>2026.03.17.01</MyVersion>
+        <AssemblyVersion>$(MyVersion)</AssemblyVersion>
+        <AssemblyFileVersion>$(MyVersion)</AssemblyFileVersion>
+        <FileVersion>$(MyVersion)</FileVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="Images\TorsionTools.ico" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="TorsionTools.ico" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Resource Include="Images\TorsionTools.ico" />
+    </ItemGroup>
+
+</Project>

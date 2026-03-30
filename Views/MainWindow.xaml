@@ -1,0 +1,51 @@
+﻿<Window x:Class="Torsion.Apps.IconConverter.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:Torsion.Apps.IconConverter.ViewModels" d:DataContext="{d:DesignInstance Type=vm:IconViewModel}"
+        xmlns:vc="clr-namespace:Torsion.Apps.IconConverter.ValueConverters"
+        mc:Ignorable="d"
+        Title="{Binding WindowTitle}" Width="425" SizeToContent="Height" ResizeMode="NoResize" Icon="/Images/TorsionTools.ico">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Buttons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid Margin="16 0 16 10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Convert ICO" FontSize="{StaticResource XLarge}" FontWeight="Bold"/>
+
+        <TextBlock Grid.Row="2" Text="Select an Image file, then choose where to save the ICO."/>
+        <StackPanel Grid.Row="4" Orientation="Horizontal">
+            <CheckBox IsChecked="{Binding FillBackground, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" Content="Fill Background" 
+                  ToolTip="Fills the background of transparent images with the selected color."/>
+            <TextBlock Text="Color=" Margin="20 0 2 0" Padding="0,0,0,1" ScrollViewer.CanContentScroll="True"
+                       Visibility="{Binding FillBackground, Converter={vc:BoolVisibilityConverter}}"/>
+            <Button Command="{Binding PickColorCMD}" Background="{Binding FillColor}" Width="40"  ToolTip="Click to select a Fill color"
+                    BorderBrush="{StaticResource TorsionGreyBrush}" BorderThickness="1" IsDefault="True" Cursor="Cross" Style="{StaticResource ColorSelection}"
+                    IsEnabled="{Binding FillBackground}" Visibility="{Binding FillBackground, Converter={vc:BoolVisibilityConverter}}"/>
+            <TextBlock Text="{Binding ColorText}" Margin="5 0" Visibility="{Binding FillBackground, Converter={vc:BoolVisibilityConverter}}"/>
+        </StackPanel>
+        <DockPanel Grid.Row="6" >
+            <Button  Width="175" Height="Auto" HorizontalAlignment="Left" Content="Select Image to Convert" Command="{Binding OkCMD}"
+                BorderBrush="{StaticResource TorsionGreyBrush}" Background="#FFFFFF" Style="{StaticResource Default}" IsDefault="True"/>
+            <Button Width="85" Height="Auto" HorizontalAlignment="Right" Content="Close" Command="{Binding CloseCMD}"
+                BorderBrush="{StaticResource TorsionGreyBrush}" Background="#FFFFFF" Style="{StaticResource Default}" IsCancel="True"/>
+        </DockPanel>
+    </Grid>
+</Window>
